@@ -11,7 +11,7 @@
 Artisan:
 https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 
-![inflagranti](pics/artisan.jpeg?raw=true "screen artisan")
+![artisan](pics/artisan.jpeg?raw=true "screen artisan" =250x250)
 
 Using PID settings: P=7, I=0.14, D=94
 My roast profile:
