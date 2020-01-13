@@ -11,6 +11,8 @@
 Artisan:
 https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 
+![circuit](pics/artisan.jpeg?raw=true "screen artisan")
+
 Using PID settings: P=7, I=0.14, D=94
 My roast profile:
 
