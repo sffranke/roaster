@@ -15,9 +15,9 @@ https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 
 Using PID settings: P=7, I=0.14, D=94
 My roast profile:
-<img src="pics/bohnengruen.jpeg"  width="150" height="100">
-<img src="pics/bohnenbraun.jpeg"  width="150" height="100">
+<img src="pics/bohnengruen.jpg"  width="150" height="100">
+<img src="pics/bohnenbraun.jpg"  width="150" height="100">
 
 ## Experiences
 I usually rost 333 kg ( 1kg/3 :) ) at once and it takes 25-28 minutes, depending on the grade I want.
-<img src="pics/set.jpeg"  width="300" height="200">
+<img src="pics/set.jpg"  width="300" height="200">
