@@ -11,7 +11,7 @@
 Artisan:
 https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 
-<img src="pics/artisan.jpeg"  width="300" height="200">
+<br><img src="pics/artisan.jpeg"  width="300" height="200">
 
 Using PID settings: P=7, I=0.14, D=94
 My roast profile:
