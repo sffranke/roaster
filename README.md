@@ -11,10 +11,10 @@
 Artisan:
 https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 
-<br><img src="pics/artisan.jpeg"  width="300" height="200">
+<img src="pics/artisan.jpeg"  width="300" height="200">
 
 Using PID settings: P=7, I=0.14, D=94
-My roast profile:
+<br>
 <img src="pics/bohnengruen.jpg"  width="150" height="100">
 <img src="pics/bohnenbraun.jpg"  width="150" height="100">
 
