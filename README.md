@@ -13,6 +13,7 @@ https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 
 <img src="pics/artisan.jpeg"  width="300" height="200">
 The sketch from https://github.com/lukeinator42/coffee-roaster/blob/master/sketch/sketch.ino:
+
 ```
 #include <max6675.h>
 #include <ModbusRtu.h>
