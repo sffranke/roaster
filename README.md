@@ -29,7 +29,7 @@ uint16_t au16data[16] = {
  *               or any pin number > 1 for RS-485
  */
 Modbus slave(1,0,0); // this is slave @1 and RS-232 or USB-FTDI
-```
+
 int thermoDO = 4;
 int thermoCS = 5;
 int thermoCLK = 6;
