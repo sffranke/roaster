@@ -65,6 +65,8 @@ void loop() {
    delay(500);
 }
 ```
+Pin 9 of the Arduino switches the Solid State Relay withch switches on and off the circuit depending on the temperature messured.
+
 Using PID settings: P=7, I=0.14, D=94
 <br>
 <img src="pics/bohnengruen.jpg"  width="150" height="100">
