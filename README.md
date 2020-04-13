@@ -40,6 +40,9 @@ int thermoSO = 4;
 int thermoCS = 5;
 int thermoSCK = 6;
 
+int temp;
+
+int DELTA = 35; // 35°C differance the messured temperature to the real temperature of the beans.
 // MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 
@@ -55,14 +58,19 @@ void setup() {
 
 void loop() {
    //write current thermocouple value
-   au16data[2] = ((uint16_t) thermocouple.readCelsius()*100);
+   
+   temp = (uint16_t) (thermocouple.readCelsius()-DELTA)*100;
+ 
+   //au16data[2] = (uint16_t) thermocouple.readCelsius()*100;
+   au16data[2] = temp;
+   //Serial.println(temp);
 
    //poll modbus registers
    slave.poll( au16data, 16 );
 
    //write relay value using pwm
    analogWrite(relay, (au16data[4]/100.0)*255);
-   delay(500);
+   delay(250);
 }
 ```
 Pin 9 of the Arduino switches the Solid State Relay witch switches on and off the circuit depending on the temperature messured.
