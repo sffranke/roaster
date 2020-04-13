@@ -42,7 +42,7 @@ int thermoSCK = 6;
 
 int temp;
 
-int DELTA = 35; // 35°C differance the messured temperature to the real temperature of the beans.
+int DELTA = 35; // 35°C differance of the messured temperature to the real temperature of the beans.
 // MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 
