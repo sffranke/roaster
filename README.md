@@ -60,8 +60,7 @@ void loop() {
    //write current thermocouple value
    
    temp = (uint16_t) (thermocouple.readCelsius()-DELTA)*100;
- 
-   //au16data[2] = (uint16_t) thermocouple.readCelsius()*100;
+
    au16data[2] = temp;
    //Serial.println(temp);
 
