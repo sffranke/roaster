@@ -73,7 +73,7 @@ void loop() {
    delay(250);
 }
 ```
-Pin 9 of the Arduino switches the Solid State Relay whitch switches on and off the circuit depending on the temperature messured.
+Pin 9 of the Arduino switches the Solid State Relay which switches on and off the circuit depending on the temperature messured.
 
 Using PID settings: P=7, I=0.14, D=94
 <br>
