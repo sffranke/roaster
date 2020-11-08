@@ -82,5 +82,5 @@ Using PID settings: P=7, I=0.14, D=94
 ## Experiences
 I usually rost 333 kg ( 1kg/3 :) ) at once and it takes 25-28 minutes, depending on the grade I want.
 <img src="pics/set.jpg"  width="300" height="200">
-<b>
+<br>
 I use Artisan (https://artisan-scope.org/) to PID-Control the process.
