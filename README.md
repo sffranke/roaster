@@ -1,6 +1,6 @@
 # roaster
 ## Hardware
-- Coffee Roaster (electrically heated pan with an arm that moves the beans)
+- Coffee Roaster (electrically heated pan with an arm to move the beans)
 - MAX6675 Thermoelement 
 - Thermo Sensor 100mm Spade K-Typ Thermoelement (connected inside the body to the metal of the pan)
 - Arduini Uno (or any other Arduino)
@@ -73,7 +73,7 @@ void loop() {
    delay(250);
 }
 ```
-Pin 9 of the Arduino switches the Solid State Relay witch switches on and off the circuit depending on the temperature messured.
+Pin 9 of the Arduino switches the Solid State Relay whitch switches on and off the circuit depending on the temperature messured.
 
 Using PID settings: P=7, I=0.14, D=94
 <br>
@@ -82,3 +82,5 @@ Using PID settings: P=7, I=0.14, D=94
 ## Experiences
 I usually rost 333 kg ( 1kg/3 :) ) at once and it takes 25-28 minutes, depending on the grade I want.
 <img src="pics/set.jpg"  width="300" height="200">
+<b>
+I use Artisan (https://artisan-scope.org/) to PID-Control the process.
