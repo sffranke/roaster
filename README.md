@@ -14,7 +14,13 @@ https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 The slightly modified sketch from https://github.com/lukeinator42/coffee-roaster/blob/master/sketch/sketch.ino:
 
 ```
+// using 2 sensors for experimental purposees
+// Infrared
+#include <Adafruit_MLX90614.h>
+// Thermoc.
 #include <max6675.h>
+
+#include <Wire.h>
 #include <ModbusRtu.h>
 
 // data array for modbus network sharing
@@ -30,46 +36,51 @@ uint16_t au16data[16] = {
  */
 Modbus slave(1,0,0); // this is slave @1 and RS-232 or USB-FTDI
 
-/*
-int thermoDO = 4;
-int thermoCS = 5;
-int thermoCLK = 6;
-*/
-
 int thermoSO = 4;
 int thermoCS = 5;
 int thermoSCK = 6;
 
-int temp;
+int mlx_temp;
+int tc_temp;
 
-int DELTA = 35; // 35°C differance of the messured temperature to the real temperature of the beans.
-// MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 
-int relay = 9;  
-  
+int mlx_relay =  9; 
+int tc_relay = 10; 
+
+int mlx_relay_offset = 0; //C*100 
+int tc_relay_offset = 0;  //C*100 
+
 void setup() {
-  slave.begin( 19200); // 19200 baud, 8-bits, even, 1-bit stop
-  // use Arduino pins 
-  pinMode(relay, OUTPUT);
-  delay(500);
+  slave.begin(19200); 
+  mlx.begin();
   
+  // use Arduino pins 
+  pinMode(mlx_relay, OUTPUT);
+  pinMode( tc_relay, OUTPUT);
+  
+  delay(500);
 }
 
 void loop() {
-   //write current thermocouple value
-   
-   temp = (uint16_t) (thermocouple.readCelsius()-DELTA)*100;
 
-   au16data[2] = temp;
-   //Serial.println(temp);
+   mlx_temp = (uint16_t) (mlx.readObjectTempC()*100+tc_relay_offset);
+   tc_temp  = (uint16_t) (thermocouple.readCelsius()*100+mlx_relay_offset);
+   au16data[2] = mlx_temp;
+   au16data[3] = tc_temp;
+   
+   //Serial.print(au16data[2]); Serial.println("*C mlx");
+   //Serial.print(au16data[3]); Serial.println("*C thc");
 
    //poll modbus registers
    slave.poll( au16data, 16 );
 
    //write relay value using pwm
-   analogWrite(relay, (au16data[4]/100.0)*255);
-   delay(250);
+   analogWrite(mlx_relay, (au16data[4]/100.0)*255);
+   analogWrite( tc_relay, (au16data[5]/100.0)*255);
+   
+   delay(500);
 }
 ```
 Pin 9 of the Arduino switches the Solid State Relay which switches on and off the circuit depending on the temperature messured.
