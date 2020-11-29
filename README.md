@@ -96,18 +96,18 @@ I usually rost 333 kg ( 1kg/3 :) ) at once and it takes 25-28 minutes, depending
 I use Artisan (https://artisan-scope.org/) to PID-Control the process.
 
 ## Some important artisan settings I use  
-Background profile:
-<img src="pics/background.jpeg"  width="300" height="200">
+Background profile:<br>
+<img src="pics/background.png"  width="300" height="200">
 <br>
-Config ports:
-<img src="pics/ports.jpeg"  width="300" height="200">
+Config ports:<br>
+<img src="pics/ports.png"  width="300" height="200">
 <br>
-Config device:
-<img src="pics/device.jpeg"  width="300" height="200">
+Config device:<br>
+<img src="pics/device.png"  width="300" height="200">
 <br>
-Config events:
-<img src="pics/events.jpeg"  width="300" height="200">
+Config events:<br>
+<img src="pics/events.png"  width="300" height="200">
 <br>
-PID control:
-<img src="pics/pid-control.jpeg"  width="300" height="200">
+PID control:<br>
+<img src="pics/pid-control.png"  width="300" height="200">
 <br>
