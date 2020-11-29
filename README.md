@@ -1,4 +1,4 @@
-# roaster
+# Roasting coffee PID controlled using artisan
 ## Hardware
 - Coffee Roaster (electrically heated pan with an arm to move the beans)
 - MAX6675 Thermoelement 
