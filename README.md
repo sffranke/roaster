@@ -46,8 +46,9 @@ int tc_temp;
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 
-int mlx_relay =  9; 
-int tc_relay = 10; 
+int led = 2;
+int mlx_relay = 10; 
+int tc_relay  = 9; 
 
 int mlx_relay_offset = 0; //C*100 
 int tc_relay_offset = 0;  //C*100 
@@ -57,8 +58,9 @@ void setup() {
   mlx.begin();
   
   // use Arduino pins 
+  pinMode(led, OUTPUT);
   pinMode(mlx_relay, OUTPUT);
-  pinMode( tc_relay, OUTPUT);
+  pinMode(tc_relay, OUTPUT);
   
   delay(500);
 }
@@ -77,8 +79,9 @@ void loop() {
    slave.poll( au16data, 16 );
 
    //write relay value using pwm
-   analogWrite(mlx_relay, (au16data[4]/100.0)*255);
-   analogWrite( tc_relay, (au16data[5]/100.0)*255);
+   analogWrite(led,       (au16data[4]/100.0)*255);
+   analogWrite(tc_relay,  (au16data[4]/100.0)*255);
+   analogWrite(mlx_relay, (au16data[5]/100.0)*255);
    
    delay(500);
 }
