@@ -15,7 +15,7 @@ The slightly modified sketch from https://github.com/lukeinator42/coffee-roaster
 
 ```
 // Infrared
-#include <Adafruit_MLX90614.h>
+// #include <Adafruit_MLX90614.h>
 // Thermoc.
 #include <max6675.h>
 
