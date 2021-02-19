@@ -14,7 +14,6 @@ https://github.com/artisan-roaster-scope/artisan/releases/tag/v1.5.0
 The slightly modified sketch from https://github.com/lukeinator42/coffee-roaster/blob/master/sketch/sketch.ino:
 
 ```
-// using 2 sensors for experimental purposees
 // Infrared
 #include <Adafruit_MLX90614.h>
 // Thermoc.
@@ -40,18 +39,15 @@ int thermoSO = 4;
 int thermoCS = 5;
 int thermoSCK = 6;
 
-int mlx_temp;
 int tc_temp;
 
-Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+//Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 
 int led = 2;
-int mlx_relay = 10; 
-int tc_relay  = 9; 
+int tc_relay  = 10; 
 
-int mlx_relay_offset = 0; //C*100 
-int tc_relay_offset = 0;  //C*100 
+int tc_relay_offset = 20;  //C*100 
 
 void setup() {
   slave.begin(19200); 
@@ -59,7 +55,6 @@ void setup() {
   
   // use Arduino pins 
   pinMode(led, OUTPUT);
-  pinMode(mlx_relay, OUTPUT);
   pinMode(tc_relay, OUTPUT);
   
   delay(500);
@@ -67,21 +62,17 @@ void setup() {
 
 void loop() {
 
-   mlx_temp = (uint16_t) (mlx.readObjectTempC()*100+tc_relay_offset);
-   tc_temp  = (uint16_t) (thermocouple.readCelsius()*100+mlx_relay_offset);
-   au16data[2] = mlx_temp;
-   au16data[3] = tc_temp;
+   tc_temp  = (uint16_t) (thermocouple.readCelsius()*100+tc_relay_offset);
+   au16data[2] = tc_temp;
    
-   //Serial.print(au16data[2]); Serial.println("*C mlx");
-   //Serial.print(au16data[3]); Serial.println("*C thc");
+   //Serial.print(au16data[2]); Serial.println("*C thc");
 
    //poll modbus registers
    slave.poll( au16data, 16 );
 
    //write relay value using pwm
-   analogWrite(led,       (au16data[4]/100.0)*255);
+   analogWrite(led,       (au16data[4]/10.0)*255);
    analogWrite(tc_relay,  (au16data[4]/100.0)*255);
-   analogWrite(mlx_relay, (au16data[5]/100.0)*255);
    
    delay(500);
 }
