@@ -15,7 +15,7 @@ The slightly modified sketch from https://github.com/lukeinator42/coffee-roaster
 
 ```
 // Infrared
-// #include <Adafruit_MLX90614.h>
+#include <Adafruit_MLX90614.h>
 // Thermoc.
 #include <max6675.h>
 
@@ -41,13 +41,13 @@ int thermoSCK = 6;
 
 int tc_temp;
 
-//Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 
 int led = 2;
 int tc_relay  = 10; 
 
-int tc_relay_offset = 20;  //C*100 
+int tc_relay_offset = 35;  //C*100 
 
 void setup() {
   slave.begin(19200); 
@@ -62,10 +62,11 @@ void setup() {
 
 void loop() {
 
-   tc_temp  = (uint16_t) (thermocouple.readCelsius()*100+tc_relay_offset);
+   tc_temp  = (uint16_t) (thermocouple.readCelsius()*100+tc_relay_offset*100);
    au16data[2] = tc_temp;
-   
-   //Serial.print(au16data[2]); Serial.println("*C thc");
+
+    
+    //Serial.print(au16data[2]); Serial.println("*C thc");
 
    //poll modbus registers
    slave.poll( au16data, 16 );
