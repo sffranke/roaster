@@ -1,4 +1,9 @@
+// Infrared
+#include <Adafruit_MLX90614.h>
+// Thermoc.
 #include <max6675.h>
+
+#include <Wire.h>
 #include <ModbusRtu.h>
 
 // data array for modbus network sharing
@@ -14,45 +19,45 @@ uint16_t au16data[16] = {
  */
 Modbus slave(1,0,0); // this is slave @1 and RS-232 or USB-FTDI
 
-/*
-int thermoDO = 4;
-int thermoCS = 5;
-int thermoCLK = 6;
-*/
-
 int thermoSO = 4;
 int thermoCS = 5;
 int thermoSCK = 6;
 
-int temp;
+int tc_temp;
 
-int DELTA = 35; // 35°C differance the messured temperature to the real temperature of the beans.
-// MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 
-int relay = 9;  
-  
+int led = 2;
+int tc_relay  = 10; 
+
+int tc_relay_offset = 30;  //C*100 
+
 void setup() {
-  slave.begin( 19200); // 19200 baud, 8-bits, even, 1-bit stop
-  // use Arduino pins 
-  pinMode(relay, OUTPUT);
-  delay(500);
+  slave.begin(19200); 
+  mlx.begin();
   
+  // use Arduino pins 
+  pinMode(led, OUTPUT);
+  pinMode(tc_relay, OUTPUT);
+  
+  delay(500);
 }
 
 void loop() {
-   //write current thermocouple value
-   
-   temp = (uint16_t) (thermocouple.readCelsius()-DELTA)*100;
- 
-   //au16data[2] = (uint16_t) thermocouple.readCelsius()*100;
-   au16data[2] = temp;
-   //Serial.println(temp);
+
+   tc_temp  = (uint16_t) (thermocouple.readCelsius()*100+tc_relay_offset*100);
+   au16data[2] = tc_temp;
+
+    
+    //Serial.print(au16data[2]); Serial.println("*C thc");
 
    //poll modbus registers
    slave.poll( au16data, 16 );
 
    //write relay value using pwm
-   analogWrite(relay, (au16data[4]/100.0)*255);
-   delay(250);
+   analogWrite(led,       (au16data[4]/10.0)*255);
+   analogWrite(tc_relay,  (au16data[4]/100.0)*255);
+   
+   delay(500);
 }
