@@ -47,7 +47,7 @@ MAX6675 thermocouple(thermoSCK, thermoCS, thermoSO);
 int led = 2;
 int tc_relay  = 10; 
 
-int tc_relay_offset = 35;  //C*100 
+int tc_relay_offset = 30;  //C*100 
 
 void setup() {
   slave.begin(19200); 
