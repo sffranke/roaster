@@ -23,8 +23,8 @@ def main():
                             "  tr= Tanzanina Robusta\n"
                             
                         ))
-    parser.add_argument("--port", default="/dev/ttyUSB0",
-                        help="Serieller Port (Default /dev/ttyUSB0)")
+    parser.add_argument("--port", default="/dev/ttyACM0",
+                        help="Serieller Port (Default /dev/ttyACM0)")
     parser.add_argument("--baud", type=int, default=115200,
                         help="Baudrate (Default 115200)")
     args = parser.parse_args()
@@ -253,7 +253,7 @@ def main():
             data = ser.readline().decode('utf-8').strip()
             if data:
                 try:
-                    temperatur = float(data)-3.7
+                    temperatur = float(data)-1.7 # linear kalibriert 
 
                     aktuelle_zeit_sek = time.time() - start_time
                     aktuelle_zeit_min = aktuelle_zeit_sek / 60.0
