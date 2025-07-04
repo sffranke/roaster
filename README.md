@@ -104,5 +104,9 @@ Config events:<br>
 <img src="pics/events.png"  width="300" height="200">
 <br>
 PID control:<br>
-<img src="pics/pid-control.png"  width="300" height="200">
+<img src="pics/plottemp.png"  width="300" height="200">
 <br>
+
+## Using a drum roaster for up to 1 kg at once. 
+temperature_only.py just measures the temperature and compares it to a profile graph. For manual controling when roasting with gas.  
+<img src="pics/bohnengruen.jpg"  width="150" height="100">
