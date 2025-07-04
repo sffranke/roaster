@@ -104,7 +104,7 @@ Config events:<br>
 <img src="pics/events.png"  width="300" height="200">
 <br>
 PID control:<br>
-<img src="pics/graph"  width="300" height="200">
+<img src="pics/graph.png"  width="300" height="200">
 <br>
 
 ## Using a drum roaster for up to 1 kg at once. 
